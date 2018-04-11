@@ -1,0 +1,71 @@
+/* eslint no-console:0 */
+const path = require("path");
+const webpack = require("webpack");
+
+const config = {
+  context: __dirname,
+  entry: [
+    "react-hot-loader/patch",
+    "webpack-dev-server/client?http://localhost:8080",
+    "webpack/hot/only-dev-server",
+    "./src/js/ClientApp.jsx"
+  ],
+  devtool: "cheap-eval-source-map",
+  output: {
+    path: path.join(__dirname, "public"),
+    filename: "bundle.js",
+    publicPath: "/public/"
+  },
+  devServer: {
+    hot: true,
+    publicPath: "/public/",
+    historyApiFallback: true
+  },
+  resolve: {
+    extensions: [".js", ".jsx", ".json"]
+    // alias: {
+    //   react: "preact-compat",
+    //   "react-dom": "preact-compat",
+    //   "preact-compat": "preact-compat/dist/preact-compat"
+    //  }
+  },
+  stats: {
+    colors: true,
+    reasons: true,
+    chunks: true
+  },
+  plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()],
+  module: {
+    rules: [
+      {
+        enforce: "pre",
+        test: /\.jsx?$/,
+        loader: "eslint-loader",
+        exclude: /node_modules/
+      },
+      {
+        test: /\.jsx?$/,
+        loader: "babel-loader"
+        // include: [path.resolve("js")] // , path.resolve("node_modules/preact-compat/src")]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      }
+    ]
+  }
+};
+
+console.log(process.env.NODE_ENV);
+
+if (process.env.NODE_ENV === "production") {
+  console.log("webpack.config: process.env.NODE_ENV is production");
+  config.entry = "./js/ClientApp.jsx";
+  config.devtool = false;
+  config.plugins = [];
+}
+
+module.exports = config;
