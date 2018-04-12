@@ -40,9 +40,9 @@ class Login3 extends React.Component<Props, State> {
   // workaround for Flow errors. Methods must be defined as properties
   // handleChange: () => void;
   handleChange = (event: SyntheticEvent<HTMLInputElement>) => {
-    console.log("handleChange()");
+    console.log("handleChange()"); // eslint-disable-line no-console
     const { name, value } = event.currentTarget;
-    console.log(`name is ${name}and value is `, value); // eslint-disable-line no console
+    console.log(`name is ${name}and value is `, value); // eslint-disable-line no-console
     this.setState({ [name]: value });
   };
   // workaround for Flow errors. Methods must be defined as properties

@@ -14,7 +14,7 @@ const webpack = require("webpack");
 const config = require("./webpack.config");
 const App = require("./src/js/App").default;
 
-const StaticRouter = ReactRouter.StaticRouter;
+const staticRouter = ReactRouter.StaticRouter; // { StaticRouter }
 const port = 8080;
 const baseTemplate = fs.readFileSync("./index.html");
 const template = _.temmplate(baseTemplate);
@@ -38,8 +38,20 @@ if (process.env.NODE_ENV === "development") {
 }
 server.use("/public", express.static("./public"));
 
-// require path
-const path = require("path");
+// here is where we hook up the React parts for the client side
+// routing
+server.use((req, res) => {
+  const context = {};
+  const body = ReactDOMServer.renderToString(
+    React.createElement(staticRouter, { location: req.url, context }, React.createElement(App))
+  );
+  if (context.url) {
+    res.redirect(301, context.url);
+  }
+
+  res.write(template({ body }));
+  res.end();
+});
 
 // require body-parser
 const bodyParser = require("body-parser");
@@ -49,14 +61,10 @@ const bodyParser = require("body-parser");
 // server.use(bodyParser.urlencoded({extended: true}))
 server.use(bodyParser.json());
 
-// tell express where the static files are.  This is the
-// public folder for our React front end code
-server.use(express.static(path.join(__dirname, "./public")));
-
 // require mongoose for our MongoDB connectivity
 require("./server/config/mongoose.js");
 
-// define the routes_setter
+// define the routes_setter for the server side routes
 const routeSetter = require("./server/config/routes.js");
 
 // invoke the function in the routes_setter and pass
@@ -64,6 +72,6 @@ const routeSetter = require("./server/config/routes.js");
 routeSetter(server);
 
 // finally start the server
-server.listen(8000, () => {
-  console.log("winetracker listening on port 8000!!!");
+server.listen(port, () => {
+  console.log(`winetracker listening on port ${port}!!!`);
 });

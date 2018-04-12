@@ -11,39 +11,39 @@ const cellars = require("../controllers/cellars.js");
 const cellarItems = require("../controllers/cellarItems.js");
 
 //  this adds route listeners to users and wines
-module.exports = function(app) {
+function doRoutes(app) {
   // these are the user related routes
 
   // TODO: do we want future functionality for
   // searching other user's cellars (if they are made public?)
 
   // this will get all the users
-  app.get("/users", (req, res) => {
+  app.get("/api/users", (req, res) => {
     users.getUsers(req, res);
   });
 
   // this should create a new user
-  app.post("/register", (req, res) => {
+  app.post("/api/register", (req, res) => {
     users.register(req, res);
   });
 
   // this should attempt to login an existing user
-  app.post("/login", (req, res) => {
+  app.post("/api/login", (req, res) => {
     users.login(req, res);
   });
 
   // this will delete a user
-  app.delete("/users/:id", (req, res) => {
+  app.delete("/api/users/:id", (req, res) => {
     users.deleteUser(req, res);
   });
 
   // this will update a user's profile info
-  app.patch("/users", (req, res) => {
+  app.patch("/api/users", (req, res) => {
     users.updateUser(req, res);
   });
 
   // this will allow a user to change their password
-  app.post("/users/changepassword", (req, res) => {
+  app.post("/api/users/changepassword", (req, res) => {
     users.changePassword(req, res);
   });
 
@@ -55,28 +55,28 @@ module.exports = function(app) {
   // this should probably paginate somehow or maybe the process can be broken up
   // TODO: how to get n number of records and then get the next n records
   // this might not be a good route to use...maybe force users to search by region before adding?
-  app.get("/wines", (req, res) => {
+  app.get("/api/wines", (req, res) => {
     wines.getAllWines(req, res);
   });
 
   // This route searches ALL wines using a given query
-  app.get("/winesearch", (req, res) => {
+  app.get("/api/winesearch", (req, res) => {
     wines.searchWines(req, res);
   });
 
   // this will post new wines
-  app.post("/wines", (req, res) => {
+  app.post("/api/wines", (req, res) => {
     wines.addWine(req, res);
   });
 
   // this will delete a wine.  this should
   // only be done by an administrator
-  app.delete("/wines/:id", (req, res) => {
+  app.delete("/api/wines/:id", (req, res) => {
     wines.deleteWine(req, res);
   });
 
   // this will update a wine.  Should this be an admin only route?
-  app.patch("/wines", (req, res) => {
+  app.patch("/api/wines", (req, res) => {
     wines.updateWine(req, res);
   });
 
@@ -131,4 +131,5 @@ module.exports = function(app) {
   app.delete("/cellaritem/:id", (req, res) => {
     cellarItems.deleteFromCellar(req, res);
   });
-};
+}
+export default doRoutes;
