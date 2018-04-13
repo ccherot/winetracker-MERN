@@ -22,7 +22,7 @@ const App = () => (
     <div className="app">
       <div className="jumbotron">
         <div className="col-sm-8 col-sm-offset-2">
-          {alert.message && <div className={`alert ${alert.type}`}>{alert.message}</div>}
+          {/* {alert.message && <div className={`alert ${alert.type}`}>{alert.message}</div>} */}
           <h1>App Works</h1>
           <Switch>
             <Route exact path="/" component={Landing} />

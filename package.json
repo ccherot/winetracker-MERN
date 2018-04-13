@@ -1,13 +1,13 @@
 {
   "scripts": {
-    "build:dev": "NODE_ENV=development webpack -d",
-    "build": "NODE_ENV=production webpack --mode production",
-    "dev": "NODE_ENV=development webpack --mode development",
     "format": "prettier --list-different --single-quote --print-width=120 \"js/**/*.{js,jsx}\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "build": "NODE_ENV=production webpack --mode production",
+    "build:dev": "NODE_ENV=development webpack -d --mode development",
+    "dev": "NODE_ENV=development nodemon server.js",
     "start": "node server.js",
-    "start:dev": "NODE_ENV=development webpack-dev-server  --mode development --open",
-    "watch": "webpack --watch"
+    "test": "NODE_ENV=test jest",
+    "test:update": "NODE_ENV=test jest -u"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -20,6 +20,7 @@
     "express": "^4.16.2",
     "history": "^4.7.2",
     "lodash": "^4.17.5",
+    "lodash.template": "^4.4.0",
     "mongoose": "^5.0.7",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
@@ -66,5 +67,6 @@
   },
   "name": "winetracker-react",
   "version": "0.1.0",
-  "description": "This is the react version of a wine cellar app that I originally started building on the MEAN stack.  This is built on the MERRN stack. ;-)"
+  "description":
+    "This is the react version of a wine cellar app that I originally started building on the MEAN stack.  This is built on the MERRN stack. ;-)"
 }

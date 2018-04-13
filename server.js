@@ -5,7 +5,7 @@ require("babel-register");
 const React = require("react");
 const ReactDOMServer = require("react-dom/server");
 const ReactRouter = require("react-router-dom");
-const _ = require("lodash");
+// const _ = require("lodash");
 const fs = require("fs");
 const webpackDevMiddleware = require("webpack-dev-middleware");
 const webpackHotMiddleware = require("webpack-hot-middleware");
@@ -17,7 +17,9 @@ const App = require("./src/js/App").default;
 const staticRouter = ReactRouter.StaticRouter; // { StaticRouter }
 const port = 8080;
 const baseTemplate = fs.readFileSync("./index.html");
-const template = _.temmplate(baseTemplate);
+const templateFunc = require("lodash.template");
+// _.temmplate(baseTemplate);
+const template = templateFunc(baseTemplate);
 
 // require express
 const express = require("express");

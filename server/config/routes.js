@@ -11,7 +11,7 @@ const cellars = require("../controllers/cellars.js");
 const cellarItems = require("../controllers/cellarItems.js");
 
 //  this adds route listeners to users and wines
-function doRoutes(app) {
+module.exports = function(app) {
   // these are the user related routes
 
   // TODO: do we want future functionality for
@@ -131,5 +131,4 @@ function doRoutes(app) {
   app.delete("/cellaritem/:id", (req, res) => {
     cellarItems.deleteFromCellar(req, res);
   });
-}
-export default doRoutes;
+};
