@@ -64,8 +64,17 @@ class Login3 extends React.Component<Props, State> {
       <div className="loginDiv">
         <h2>Login</h2>
 
-        <form id="loginForm" className="loginFormClass" onSubmit={this.handleSubmit} name="loginForm">
-          <div className={`form-group${submitted && !userEmail ? " has-error" : ""}`}>
+        <form
+          id="loginForm"
+          className="loginFormClass"
+          onSubmit={this.handleSubmit}
+          name="loginForm"
+        >
+          <div
+            className={`form-group${
+              submitted && !userEmail ? " has-error" : ""
+            }`}
+          >
             <label id="loginEmailabel" htmlFor="loginUserEmailInput">
               Email
             </label>
@@ -77,9 +86,16 @@ class Login3 extends React.Component<Props, State> {
               value={userEmail}
               onChange={this.handleChange}
             />
-            {submitted && !userEmail && <div className="help-block">Username is required</div>}
+            {submitted &&
+              !userEmail && (
+                <div className="help-block">Username is required</div>
+              )}
           </div>
-          <div className={`form-group${submitted && !userEmail ? " has-error" : ""}`}>
+          <div
+            className={`form-group${
+              submitted && !userEmail ? " has-error" : ""
+            }`}
+          >
             <label htmlFor="loginPasswordInput">Password</label>
             <input
               type="text"
@@ -90,7 +106,10 @@ class Login3 extends React.Component<Props, State> {
               onChange={this.handleChange}
             />
           </div>
-          {submitted && !userPassword && <div className="help-block">Password is required</div>}
+          {submitted &&
+            !userPassword && (
+              <div className="help-block">Password is required</div>
+            )}
           <div className="form-group">
             <button className="btn btn-primary">Login</button>
             {loggingIn && (
@@ -99,7 +118,7 @@ class Login3 extends React.Component<Props, State> {
                 src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
               />
             )}
-            <Link to="/register" className="btn btn-link">
+            <Link to="/register2" className="btn btn-link">
               Register
             </Link>
           </div>
