@@ -4,13 +4,8 @@ const webpack = require("webpack");
 
 const config = {
   context: __dirname,
-  entry: [
-    "react-hot-loader/patch",
-    "webpack-dev-server/client?http://localhost:8080",
-    "webpack/hot/only-dev-server",
-    "./src/js/ClientApp.jsx"
-  ],
-  devtool: "cheap-eval-source-map",
+  entry: ["./src/js/ClientApp.jsx"],
+  devtool: process.env.NODE_ENV === "development" ? "cheap-eval-source-map" : false,
   output: {
     path: path.join(__dirname, "public"),
     filename: "bundle.js",
@@ -60,12 +55,14 @@ const config = {
 };
 
 console.log(process.env.NODE_ENV);
-
-if (process.env.NODE_ENV === "production") {
-  console.log("webpack.config: process.env.NODE_ENV is production");
-  config.entry = "./js/ClientApp.jsx";
-  config.devtool = false;
-  config.plugins = [];
+if (process.env.NODE_ENV === "development") {
+  config.entry.unshift("webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000");
 }
+// if (process.env.NODE_ENV === "production") {
+//   console.log("webpack.config: process.env.NODE_ENV is production");
+//   config.entry = "./js/ClientApp.jsx";
+//   config.devtool = false;
+//   config.plugins = [];
+// }
 
 module.exports = config;

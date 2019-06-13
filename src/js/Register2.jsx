@@ -40,13 +40,15 @@ class Register extends React.Component<Props, State> {
     const { name, value } = event.currentTarget;
     console.log(`Register: handleChange: name is${name} and value is `, value); // eslint-disable-line no-console
     // const { user } = this.state;
-    // this.setState({
-    //   user: {
-    //     ...user,
-    //     [name]: value
-    //   }
-    // });
-    this.setState({ [name]: value });
+    // this.setState({ user{[name]}: value });
+    const { user } = this.state;
+    this.setState({
+      user: {
+        ...user,
+        [name]: value
+      }
+    });
+    // this.setState({ [name]: value });
   };
   handleSubmit: () => void;
   handleSubmit = (event: SyntheticEvent<HTMLButtonElement>) => {
@@ -57,7 +59,13 @@ class Register extends React.Component<Props, State> {
     });
     const { user } = this.state;
     const { dispatch } = this.props;
-    if (user.firstName && user.lastName && user.email && user.password && user.password === user.passwordConfirm) {
+    if (
+      user.firstName &&
+      user.lastName &&
+      user.email &&
+      user.password &&
+      user.password === user.passwordConfirm
+    ) {
       dispatch(userActions.register(user));
     }
   };
@@ -68,8 +76,17 @@ class Register extends React.Component<Props, State> {
     return (
       <div className="col-md-6 col-md-offset-3">
         <h2>Register</h2>
-        <form name="form" onSubmit={this.handleSubmit} id="registrationForm" className="registrationFromClass">
-          <div className={`form-group${submitted && !user.firstName ? " has error" : ""}`}>
+        <form
+          name="form"
+          onSubmit={this.handleSubmit}
+          id="registrationForm"
+          className="registrationFromClass"
+        >
+          <div
+            className={`form-group${
+              submitted && !user.firstName ? " has error" : ""
+            }`}
+          >
             <label htmlFor="firstName">First Name:</label>
             <input
               type="text"
@@ -79,7 +96,11 @@ class Register extends React.Component<Props, State> {
               onChange={this.handleChange}
             />
           </div>
-          <div className={`form-group${submitted && !user.lastName ? " has-error" : ""}`}>
+          <div
+            className={`form-group${
+              submitted && !user.lastName ? " has-error" : ""
+            }`}
+          >
             <label htmlFor="lastName">Last Name:</label>
             <input
               type="text"
@@ -89,27 +110,39 @@ class Register extends React.Component<Props, State> {
               onChange={this.handleChange}
             />
           </div>
-          <div className={`form-group${submitted && !user.email ? " has-error" : ""}`}>
+          <div
+            className={`form-group${
+              submitted && !user.email ? " has-error" : ""
+            }`}
+          >
             <label htmlFor="regEmail">Email:</label>
             <input
               type="text"
-              name="regEmail"
+              name="mail"
               className="form-control"
               value={user.email}
               onChange={this.handleChange}
             />
           </div>
           <label htmlFor="password">
-            <div className={`form-group${submitted && !user.password ? " has-error" : ""}`} />Password:
+            <div
+              className={`form-group${
+                submitted && !user.password ? " has-error" : ""
+              }`}
+            />Password:
           </label>
           <input
             type="text"
-            name="regPassword"
+            name="password"
             className="form-control"
             value={user.password}
             onChange={this.handleChange}
           />
-          <div className={`form-group${submitted && !user.passwordConfirm ? " has-error" : ""}`} />
+          <div
+            className={`form-group${
+              submitted && !user.passwordConfirm ? " has-error" : ""
+            }`}
+          />
           <label htmlFor="passwordConfirm">Password Confirm:</label>
           <input
             type="text"
@@ -118,11 +151,15 @@ class Register extends React.Component<Props, State> {
             value={user.passwordConfirm}
             onChange={this.handleChange}
           />
-          <div className={`form-group${submitted && !user.birthday ? " has-error" : ""}`}>
+          <div
+            className={`form-group${
+              submitted && !user.birthday ? " has-error" : ""
+            }`}
+          >
             <label htmlFor="regBirthday">Birthday:</label>
             <input
               type="date"
-              name="regBirthday"
+              name="birthday"
               className="form-control"
               value={user.birthday}
               onChange={this.handleChange}

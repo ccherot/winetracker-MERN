@@ -22,7 +22,10 @@ const store = createStore(
   compose(
     applyMiddleware(thunk), // thunkMiddleware,
     applyMiddleware(logger), // loggerMiddleware
-    typeof window === "object" && typeof window.devToolsExtension !== "undefined" ? window.devToolsExtension() : f => f
+    typeof window === "object" &&
+    typeof window.devToolsExtension !== "undefined"
+      ? window.devToolsExtension()
+      : f => f
   )
 );
 

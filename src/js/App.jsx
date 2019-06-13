@@ -22,20 +22,53 @@ const App = () => (
     <div className="app">
       <div className="jumbotron">
         <div className="col-sm-8 col-sm-offset-2">
-          {alert.message && <div className={`alert ${alert.type}`}>{alert.message}</div>}
+          {/* {alert.message && <div className={`alert ${alert.type}`}>{alert.message}</div>} */}
           <h1>App Works</h1>
           <Switch>
             <Route exact path="/" component={Landing} />
-            <Route exact path="/test" component={props => <TestComponent {...props} />} />
-            <Route exact path="/login" component={props => <Login {...props} />} />
-            <Route exact path="/login2" component={props => <Login2 {...props} />} />
-            <Route exact path="/login3" component={props => <Login3 {...props} />} />
-            <Route exact path="/register" component={props => <Register {...props} />} />
-            <Route exact path="/register2" component={props => <Register2 {...props} />} />
+            <Route
+              exact
+              path="/test"
+              component={props => <TestComponent {...props} />}
+            />
+            <Route
+              exact
+              path="/login"
+              component={props => <Login {...props} />}
+            />
+            <Route
+              exact
+              path="/login2"
+              component={props => <Login2 {...props} />}
+            />
+            <Route
+              exact
+              path="/login3"
+              component={props => <Login3 {...props} />}
+            />
+            <Route
+              exact
+              path="/register"
+              component={props => <Register {...props} />}
+            />
+            <Route
+              exact
+              path="/register2"
+              component={props => <Register2 {...props} />}
+            />
             {/* <Route exact path="/testcomponent" component={TestComponent} /> */}
-            <Route path="/cellardetail/:id" component={props => <CellarDetail {...props} />} />
-            <Route path="/winedetail/:id" component={props => <WineDetail {...props} />} />
-            <Route path="/dashboard/:id" component={props => <Dashboard {...props} />} />
+            <Route
+              path="/cellardetail/:id"
+              component={props => <CellarDetail {...props} />}
+            />
+            <Route
+              path="/winedetail/:id"
+              component={props => <WineDetail {...props} />}
+            />
+            <Route
+              path="/dashboard/:id"
+              component={props => <Dashboard {...props} />}
+            />
             <Route component={FourOhFour} />
           </Switch>
         </div>

@@ -1,6 +1,14 @@
+import get from "lodash/get";
 import { userConstants } from "../constants";
 
-const user = JSON.parse(localStorage.getItem("user"));
+let user;
+if (typeof window !== "undefined") {
+  const storage = get(window, "localStorage", null);
+  if (storage) {
+    user = JSON.parse(storage.getItem("user"));
+  }
+}
+
 const initialState = user ? { loggedIn: true, user } : {};
 
 export function authentication(state = initialState, action) {
