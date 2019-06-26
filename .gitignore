@@ -12,5 +12,7 @@ _site/
 .sass-cache/
 *.iml
 .idea/
-
-
+dist/
+.env
+.vscode
+.cache/
