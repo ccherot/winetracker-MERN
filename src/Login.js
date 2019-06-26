@@ -2,9 +2,10 @@ import React from "react";
 
 class Login extends React.Component {
   doSomething = () => {
-    console.log("something"); // eslint-disable-line no-console
+    console.log("something else still"); // eslint-disable-line no-console
   };
   render() {
+    this.doSomething();
     return (
       <div className="loginDiv">
         <h1>Login Works</h1>
