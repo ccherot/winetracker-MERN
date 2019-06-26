@@ -1,9 +1,0 @@
- removed this from the "env" preset for babel
- {
-        "targets": {
-          "browsers": "last 2 versions"
-        },
-        "loose": true,
-        "modules": false
-      }
-    ]

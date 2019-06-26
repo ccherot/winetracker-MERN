@@ -1,13 +1,29 @@
-// @flow
+import React from "react";
 
-import * as React from "react";
+// type Props = {};
+class Register extends React.Component {
+  /* props: {};
+  doSomething = () => {
+    console.log("something"); // eslint-disable-line no-console
+  }; */
+  render() {
+    return (
+      <div className="registerDiv">
+        <h1>Register Works</h1>
+      </div>
+    );
+  }
+}
+export default Register;
+
+/* import * as React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import userActions from "../actions";
+import userActions from "./actions";
 
 // import PropTypes from "prop-types";
 type Props = {
-  user: NewUser,
+  // user: NewUser,
   dispatch: Function,
   registering: boolean
 };
@@ -40,13 +56,15 @@ class Register extends React.Component<Props, State> {
     const { name, value } = event.currentTarget;
     console.log(`Register: handleChange: name is${name} and value is `, value); // eslint-disable-line no-console
     // const { user } = this.state;
-    // this.setState({
-    //   user: {
-    //     ...user,
-    //     [name]: value
-    //   }
-    // });
-    this.setState({ [name]: value });
+    // this.setState({ user{[name]}: value });
+    const { user } = this.state;
+    this.setState({
+      user: {
+        ...user,
+        [name]: value
+      }
+    });
+    // this.setState({ [name]: value });
   };
   handleSubmit: () => void;
   handleSubmit = (event: SyntheticEvent<HTMLButtonElement>) => {
@@ -116,9 +134,9 @@ class Register extends React.Component<Props, State> {
             <label htmlFor="regEmail">Email:</label>
             <input
               type="text"
-              name="regEmail"
+              name="mail"
               className="form-control"
-              value={this.props.user.email}
+              value={user.email}
               onChange={this.handleChange}
             />
           </div>
@@ -131,7 +149,7 @@ class Register extends React.Component<Props, State> {
           </label>
           <input
             type="text"
-            name="regPassword"
+            name="password"
             className="form-control"
             value={user.password}
             onChange={this.handleChange}
@@ -157,7 +175,7 @@ class Register extends React.Component<Props, State> {
             <label htmlFor="regBirthday">Birthday:</label>
             <input
               type="date"
-              name="regBirthday"
+              name="birthday"
               className="form-control"
               value={user.birthday}
               onChange={this.handleChange}
@@ -188,3 +206,4 @@ function mapStateToProps(state) {
 }
 export const Unwrapped = Register;
 export default connect(mapStateToProps)(Register);
+ */
