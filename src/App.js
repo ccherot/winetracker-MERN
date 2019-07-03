@@ -1,33 +1,25 @@
-import React, { useState } from "react";
+import React from "react"; // { useState }
 import ReactDOM from "react-dom";
+import Provider from "react-redux";
+import store from "./store";
+/* 
 import { Router } from "@reach/router";
 import Landing from "./Landing";
 import Login from "./Login";
 import Register from "./Register";
 import CellarDetail from "./CellarDetail";
-import ThemeContext from "./ThemeContext";
 import Footer from "./Footer";
 import WineDetail from "./WineDetail";
 import Dashboard from "./Dashboard";
 import NavBar from "./NavBar";
-
+ */
 const App = () => {
-  const theme = useState("darkBlue");
   return (
-    <ThemeContext.Provider value={theme}>
+    <Provider store={store}>
       <div>
-        <NavBar />
-        <Router>
-          <Landing path="/" />
-          <Login path="/login" />
-          <Register path="/register" />
-          <CellarDetail path="/cellardetail" />
-          <WineDetail path="/winedetail" />
-          <Dashboard path="/dashboard" />
-        </Router>
-        <Footer />
+        <h1>App Works</h1>
       </div>
-    </ThemeContext.Provider>
+    </Provider>
   );
 };
 

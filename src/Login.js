@@ -1,11 +1,43 @@
 import React from "react";
+// import Link from "@reach/router";
+// mport { connect } from "react-redux";
+// import userActions from "./actions/user.actions";
 
 class Login extends React.Component {
+  //    props = { loggingIn: false, dispatch: Function };
+  //  state = { userEmail: "", userPassword: "", submitted: false };
   doSomething = () => {
     console.log("something else"); // eslint-disable-line no-console
   };
+  /* 
+  handleChange = event => {
+    const { name, value } = event.currentTarget;
+    this.setState({ [name]: value });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+
+    this.setState({ submitted: true });
+    const { userEmail, userPassword } = this.state;
+    const { dispatch } = this.props;
+    if (userEmail && userPassword) {
+      dispatch(userActions.login(userEmail, userPassword));
+    }
+  };
+*/
+
   render() {
-    this.doSomething();
+    //  const { loggingIn } = this.props;
+    //    const { userEmail, userPassword, submitted } = this.state;
+    //  console.log("Login > render() > logginIn is ", loggingIn); // eslint-disable-line no-console
+    /*  console.log(
+      "Login > render() > userEmail, password and submitted are $1, $2, and $3",
+      userEmail,
+      userPassword,
+      submitted
+    ); // eslint-disable-line no-console
+    */
     return (
       <div className="loginDiv">
         <h1>Login Works</h1>
@@ -13,6 +45,18 @@ class Login extends React.Component {
     );
   }
 }
+// }{ userEmail: this.props.userEmail, userpassword: this.props.userPassword });
+/*
+const mapStateToProps = state => {
+  const { loggingIn } = state.authentication;
+  return {
+    loggingIn
+  };
+};
+
+// export const Unwrapped = Login;
+export default connect(mapStateToProps)(Login);
+*/
 export default Login;
 
 // import * as React from "react";
